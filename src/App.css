@@ -3,6 +3,12 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
+  background-color: #2F3C7E;
+}
+
+h1{
+  margin-bottom: 0;
+  margin-top: 1vh;
 }
 
 .App-logo {
@@ -20,55 +26,76 @@
 }
 
 .text-input {
+  text-align: center;
   margin: 1vh;
-  height: 30px;
-  width: 100%;
+  font-size: 30px;
+  height: 200px;
+  width: 80vw;
 }
 
 .text-preview {
   height: 20vh;
   width: 80vw;
-  background-color: blue;
+  background-color: #FBEAEB;;
   margin: 3vh;
-  color: white;
-  border: 2px solid black;
+  margin-bottom: 0;
+  color: #2F3C7E;
+  border: 2px solid white;
   white-space: normal;
   display: block;
   word-break:break-word;
+  font-size: 40px;
+  overflow-y: auto;
 }
 
 .code-preview {
-  background-color: grey;
+  background-color: rgb(0, 0, 0);
   color: white;
-  width: 100%;
+  font-size: 50px;
+  width: 40%;
+  font-family: 'Courier New', Courier, monospace;
+  height: 5vh;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color:  #26316898;
   display: flex;
-  height: 10vh;
+  height: auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color:  white;
 }
 
 .code-input {
-  height: 10vh;
+  height: auto;
   width: 100%;
-  background-color: pink;
+  background-color:  #FBEAEB;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+}
+
+ol{
+  text-align: start;
+  margin-top: 0;
+  font-size: 30px;
+}
+
+.label{
+  color: white;
+  font-size: 40px;
+  margin: 0;
 }
 
 .App-body {
   height: 100%;
   width: 100%;
   display: flex;
-  background-color: rgb(77, 90, 89);
+  background-color: #2F3C7E;
+  box-shadow:#263168cb inset 0px 0 20px 5px; 
   flex-direction: column;
   align-items: center;
 }
@@ -78,16 +105,31 @@
   width: 5vh;
   height: 5vh;
   text-align: center;
-  margin: 2vw;
+  margin: .3vh;
+  display: flex;
+  flex-shrink: 3;
+  justify-content: center;
+  align-items: center;
+  font-weight: 1000;
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .backbutton {
   background-color: rgb(196, 196, 196);
-  width: 5vh;
+  width: auto;
   height: 5vh;
   font-weight: 800;
   text-align: center;
-  margin: 2vw;
+  margin: .3vh;
+}
+
+button {
+  width: auto;
+  margin: .5vh;
+  height: 4vh;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 

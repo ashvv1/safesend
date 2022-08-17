@@ -10,10 +10,30 @@ function App() {
 
   const switchChars = (q, text) => {
     const oldText = text;
-    oldText.replace('a', 'q');
+    if(q===0){
+      oldText.replace('a', 'q');
     oldText.replace('q', 'a');
+    }else{
     oldText.replace('l', '9');
     oldText.replace('9', 'l');
+  }
+    const newText = oldText;
+    return (newText);
+  }
+
+  const switchCharsTwo = (q, text) => {
+    const oldText = text;
+    if(q===0){
+      oldText.replace('n', 'm');
+    oldText.replace('y', '.');
+    oldText.replace('5', '3');
+    oldText.replace('t', 'r');
+    }else{
+      oldText.replace('m', 'n');
+      oldText.replace('.', 'y');
+      oldText.replace('3', '5');
+      oldText.replace('r', 't');
+    }
     const newText = oldText;
     return (newText);
   }
@@ -165,7 +185,7 @@ function App() {
       },
     "9":
       (q, text) => {
-        return shiftByCode(q, text);
+        return switchCharsTwo(q, text);
       },
   }
 
@@ -206,25 +226,28 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        SafeSend
+        <h1>SafeSend</h1>
+        <ol>
+          <li>Enter message</li>
+          <li>Enter 6-Digit code and DONT FORGET IT!</li>
+          <li>Send your encrypted message to </li>
+        </ol>
       </header>
       <div className="App-body">
         <div className="input-container">
-          <input className="text-input" ref={textOut} onChange={e => changeText(e)} placeholder="Enter phrase to encode" />
-          <div className="text-preview">{mytext}</div>
-          <p>6 Digit Code</p>
+          <input className="text-input" ref={textOut} onChange={e => changeText(e)} placeholder="Enter phrase to encode/decode" />
+          <p className="label">6 Digit Code</p>
+          <div className="code-preview">{mycode}</div>
           <div className="code-input">
-            
             {[...Array(10)].map((n, i) =>
               <span key={"button" + i} className="code-number" onClick={e => addCode(e)}>{i}</span>
             )}
             <button className="backbutton" onClick={e => backSpace(e)}>DEL</button>
 
           </div>
-          <button onClick={scrambleText} disabled={mycode.length !== 6}>scramble!</button>
-          <button onClick={unscrambleText} disabled={mycode.length !== 6}>UNscramble!</button>
-          <input className="text-input" placeholder="Enter phrase to decode" />
-          <div className="code-preview">{mycode}</div>
+          <button onClick={scrambleText} disabled={mycode.length !== 6}>SCRAMBLE</button>
+          <button onClick={unscrambleText} disabled={mycode.length !== 6}>DESCRAMBLE</button>
+          
           <div className="text-preview">{scrambledtext}</div>
         </div>
 
