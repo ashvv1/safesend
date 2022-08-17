@@ -11,14 +11,29 @@ function App() {
   const switchChars = (q, text) => {
     const oldText = text;
     if(q===0){
-      oldText.replace('a', 'q');
+    oldText.replace('a', 'q');
     oldText.replace('q', 'a');
-    }else{
+    const tempArray = oldText.split('');
+    for (let i = 0; i < tempArray.length; i++) {
+      const oldChar = oldText.charCodeAt(i);
+      const newChar = String.fromCharCode(oldChar + 1)
+      tempArray[i] = newChar;
+    }
+   const newText = tempArray.join('');
+   return newText
+  }else{
+    const oldText = text;
+    const tempArray = oldText.split('');
+    for (let i = 0; i < tempArray.length; i++) {
+      const oldChar = oldText.charCodeAt(i);
+      const newChar = String.fromCharCode(oldChar - 1)
+      tempArray[i] = newChar;
+    }
+    const newText = tempArray.join('');
     oldText.replace('l', '9');
     oldText.replace('9', 'l');
+    return newText;
   }
-    const newText = oldText;
-    return (newText);
   }
 
   const switchCharsTwo = (q, text) => {
@@ -28,19 +43,33 @@ function App() {
     oldText.replace('y', '.');
     oldText.replace('5', '3');
     oldText.replace('t', 'r');
+    const tempArray = oldText.split('');
+    for (let i = 0; i < tempArray.length; i++) {
+      const oldChar = oldText.charCodeAt(i);
+      const newChar = String.fromCharCode(oldChar + 1)
+      tempArray[i] = newChar;
+    }
+   const newText = tempArray.join('');
+   return newText
     }else{
+      const oldText = text;
+      const tempArray = oldText.split('');
+      for (let i = 0; i < tempArray.length; i++) {
+        const oldChar = oldText.charCodeAt(i);
+        const newChar = String.fromCharCode(oldChar - 1)
+        tempArray[i] = newChar;
+      }
+      const newText = tempArray.join('');
       oldText.replace('m', 'n');
       oldText.replace('.', 'y');
       oldText.replace('3', '5');
       oldText.replace('r', 't');
+      return newText;
     }
-    const newText = oldText;
-    return (newText);
   }
 
   const shiftUni = (q, text) => {
     if (q === 0) {
-      console.log(text);
       const tempText = text;
       const tempArray = tempText.split('');
       for (let i = 0; i < tempArray.length; i++) {
@@ -92,6 +121,9 @@ function App() {
       const tempChar = textArray[0];
       textArray.shift(tempChar);
       textArray.push(tempChar);
+      const tempCharTwo = textArray[0];
+      textArray.shift(tempCharTwo);
+      textArray.push(tempCharTwo);
       return textArray.join('');
     }
   }
@@ -196,7 +228,7 @@ function App() {
 
   const addCode = (e) => {
     const number = (parseInt(e.target.innerHTML));
-    if (mycode.length < 6) {
+    if (mycode.length < 5) {
       setmycode([...mycode, number])
     }
   }
@@ -222,6 +254,19 @@ function App() {
     handleUnscramble();
   }
 
+  // const handleCopy = () => {
+  // var copyText = document.getElementById("scrambledText");
+  // copyText.select();
+  // navigator.clipboard.writeText(copyText.innerHTML.value);
+  // console.log(copyText)
+  // alert("Added to clipboard");
+  // }
+
+  // const checkCoded = () => {
+  //   var copyText = document.getElementById("scrambledText");
+  //   return false;
+  // }
+
 
   return (
     <div className="App">
@@ -229,14 +274,14 @@ function App() {
         <h1>SafeSend</h1>
         <ol>
           <li>Enter message</li>
-          <li>Enter 6-Digit code and DONT FORGET IT!</li>
+          <li>Enter 5-Digit code and DONT FORGET IT!</li>
           <li>Send your encrypted message to </li>
         </ol>
       </header>
       <div className="App-body">
         <div className="input-container">
           <input className="text-input" ref={textOut} onChange={e => changeText(e)} placeholder="Enter phrase to encode/decode" />
-          <p className="label">6 Digit Code</p>
+          <p className="label">5 Digit Code</p>
           <div className="code-preview">{mycode}</div>
           <div className="code-input">
             {[...Array(10)].map((n, i) =>
@@ -245,12 +290,18 @@ function App() {
             <button className="backbutton" onClick={e => backSpace(e)}>DEL</button>
 
           </div>
+          <div className="options-container">
+          <div className="left-options"></div>
           <div className='options'>
-          <button onClick={scrambleText} disabled={mycode.length !== 6}>SCRAMBLE</button>
-          <button onClick={unscrambleText} disabled={mycode.length !== 6}>DESCRAMBLE</button></div>
-          
-          
-          <div className="text-preview">{scrambledtext}</div>
+          <button onClick={scrambleText} disabled={mycode.length !== 5}>SCRAMBLE</button>
+          <button onClick={unscrambleText} disabled={mycode.length !== 5}>DESCRAMBLE</button>
+          </div>
+          <div className="right-options">
+            {/* <button onClick={handleCopy} disabled={checkCoded}>Copy Output</button> */}
+          </div>
+          </div>
+         
+          <div className="text-preview" id="scrambledText" >{scrambledtext}</div>
         </div>
 
       </div>
