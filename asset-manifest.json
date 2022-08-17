@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/safesend/static/css/main.509a604e.css",
-    "main.js": "/safesend/static/js/main.d81096aa.js",
+    "main.css": "/safesend/static/css/main.89e954ce.css",
+    "main.js": "/safesend/static/js/main.93ed3881.js",
     "index.html": "/safesend/index.html",
-    "main.509a604e.css.map": "/safesend/static/css/main.509a604e.css.map",
-    "main.d81096aa.js.map": "/safesend/static/js/main.d81096aa.js.map"
+    "main.89e954ce.css.map": "/safesend/static/css/main.89e954ce.css.map",
+    "main.93ed3881.js.map": "/safesend/static/js/main.93ed3881.js.map"
   },
   "entrypoints": [
-    "static/css/main.509a604e.css",
-    "static/js/main.d81096aa.js"
+    "static/css/main.89e954ce.css",
+    "static/js/main.93ed3881.js"
   ]
 }
