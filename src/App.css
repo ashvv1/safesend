@@ -26,18 +26,20 @@ h1{
 }
 
 .text-input {
-  text-align: center;
+  text-align: start;
   margin: 1vh;
-  font-size: 30px;
-  height: 200px;
+  font-size: 25px;
+  height: 20vh;
   width: 80vw;
+  display: block;
+  word-break:break-word;
 }
 
 .text-preview {
   height: 20vh;
   width: 80vw;
   background-color: #FBEAEB;;
-  margin: 3vh;
+  margin: 1vh;
   margin-bottom: 0;
   color: #2F3C7E;
   border: 2px solid white;
@@ -51,7 +53,7 @@ h1{
 .code-preview {
   background-color: rgb(0, 0, 0);
   color: white;
-  font-size: 50px;
+  font-size: 30px;
   width: 40%;
   font-family: 'Courier New', Courier, monospace;
   height: 5vh;
@@ -81,12 +83,12 @@ h1{
 ol{
   text-align: start;
   margin-top: 0;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .label{
   color: white;
-  font-size: 40px;
+  font-size: 20px;
   margin: 0;
 }
 
@@ -126,9 +128,9 @@ ol{
 
 button {
   width: auto;
-  margin: .5vh;
+  margin: 2vh;
   height: 4vh;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 500;
 }
 

@@ -125,7 +125,7 @@ function App() {
       const tempArray = tempText.split('');
       for (let i = 0; i < tempArray.length; i++) {
         const oldChar = tempText.charCodeAt(i);
-        const newChar = String.fromCharCode(oldChar + mycode[0])
+        const newChar = String.fromCharCode(oldChar + Math.ceil(mycode[0]/3))
         tempArray[i] = newChar;
       }
       return tempArray.join('');
@@ -134,7 +134,7 @@ function App() {
       const tempArray = tempText.split('');
       for (let i = 0; i < tempArray.length; i++) {
         const oldChar = tempText.charCodeAt(i);
-        const newChar = String.fromCharCode(oldChar - mycode[0])
+        const newChar = String.fromCharCode(oldChar - Math.ceil(mycode[0]/3))
         tempArray[i] = newChar;
       }
       return tempArray.join('');
@@ -245,8 +245,10 @@ function App() {
             <button className="backbutton" onClick={e => backSpace(e)}>DEL</button>
 
           </div>
+          <div className='options'>
           <button onClick={scrambleText} disabled={mycode.length !== 6}>SCRAMBLE</button>
-          <button onClick={unscrambleText} disabled={mycode.length !== 6}>DESCRAMBLE</button>
+          <button onClick={unscrambleText} disabled={mycode.length !== 6}>DESCRAMBLE</button></div>
+          
           
           <div className="text-preview">{scrambledtext}</div>
         </div>
