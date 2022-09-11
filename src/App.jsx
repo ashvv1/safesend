@@ -9,6 +9,7 @@ function App() {
   const [scrambledtext, setscrambledtext] = useState("")
   const textOut = useRef();
 
+  
   const scramble = {
     "0":
       (q, text) => {

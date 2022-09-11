@@ -1,12 +1,10 @@
 const switchChars = (q, text) => {
     const oldText = text;
     if(q===0){
-    oldText.replace('a', 'q');
-    oldText.replace('q', 'a');
     const tempArray = oldText.split('');
     for (let i = 0; i < tempArray.length; i++) {
       const oldChar = oldText.charCodeAt(i);
-      const newChar = String.fromCharCode(oldChar + 1)
+      const newChar = String.fromCharCode(oldChar + (i%2===0?(1):(2)))
       tempArray[i] = newChar;
     }
    const newText = tempArray.join('');
@@ -16,47 +14,37 @@ const switchChars = (q, text) => {
     const tempArray = oldText.split('');
     for (let i = 0; i < tempArray.length; i++) {
       const oldChar = oldText.charCodeAt(i);
-      const newChar = String.fromCharCode(oldChar - 1)
+      const newChar = String.fromCharCode(oldChar - (i%2===0?(1):(2)))
       tempArray[i] = newChar;
     }
     const newText = tempArray.join('');
-    oldText.replace('l', '9');
-    oldText.replace('9', 'l');
     return newText;
   }
-  }
+  };
 
   const switchCharsTwo = (q, text) => {
     const oldText = text;
     if(q===0){
-      oldText.replace('n', 'm');
-    oldText.replace('y', '.');
-    oldText.replace('5', '3');
-    oldText.replace('t', 'r');
-    const tempArray = oldText.split('');
-    for (let i = 0; i < tempArray.length; i++) {
-      const oldChar = oldText.charCodeAt(i);
-      const newChar = String.fromCharCode(oldChar + 1)
-      tempArray[i] = newChar;
-    }
-   const newText = tempArray.join('');
-   return newText
+      const tempArray = oldText.split('');
+      for (let i = 0; i < tempArray.length; i++) {
+        const oldChar = oldText.charCodeAt(i);
+        const newChar = String.fromCharCode(oldChar + (i%3===0?(2):(1)))
+        tempArray[i] = newChar;
+      }
+     const newText = tempArray.join('');
+     return newText
     }else{
       const oldText = text;
       const tempArray = oldText.split('');
       for (let i = 0; i < tempArray.length; i++) {
         const oldChar = oldText.charCodeAt(i);
-        const newChar = String.fromCharCode(oldChar - 1)
+        const newChar = String.fromCharCode(oldChar - (i%3===0?(2):(1)))
         tempArray[i] = newChar;
       }
       const newText = tempArray.join('');
-      oldText.replace('m', 'n');
-      oldText.replace('.', 'y');
-      oldText.replace('3', '5');
-      oldText.replace('r', 't');
       return newText;
-    }
   }
+};
 
   const shiftUni = (q, text) => {
     if (q === 0) {
@@ -78,7 +66,7 @@ const switchChars = (q, text) => {
       }
       return tempArray.join('');
     }
-  }
+  };
 
   const rotateChars = (q, text) => {
     if (q === 0) {
@@ -94,7 +82,7 @@ const switchChars = (q, text) => {
       textArray.push(tempChar);
       return textArray.join('');
     }
-  }
+  };
 
   const rotateCharsTwice = (q, text) => {
     if (q === 0) {
@@ -116,7 +104,7 @@ const switchChars = (q, text) => {
       textArray.push(tempCharTwo);
       return textArray.join('');
     }
-  }
+  };
 
   const shiftUniTwo = (q, text) => {
     if (q === 0) {
@@ -139,7 +127,7 @@ const switchChars = (q, text) => {
       }
       return tempArray.join('');
     }
-  }
+  };
 
   const shiftByCode = (q, text, mycode) => {
     if (q === 0) {
@@ -161,12 +149,12 @@ const switchChars = (q, text) => {
       }
       return tempArray.join('');
     }
-  }
+  };
 
   const reverseChars = (q, text) => {
     return text.split('').reverse().join('');
-  }
+  };
 
  module.exports = {
     switchChars, switchCharsTwo,shiftUni, shiftUniTwo, rotateChars, rotateCharsTwice, shiftByCode, reverseChars
- }
+ };
