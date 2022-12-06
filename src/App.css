@@ -75,7 +75,14 @@ border-color: #0677A1;
 .entry-header{
   font-size: 30px;
   color: #6698aa;
+}
 
+.clickable{
+  cursor: pointer;
+}
+
+.hidden{
+  display: none;
 }
 
 .entry-button{
@@ -273,6 +280,7 @@ button {
   border: none;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.63);
+  cursor: pointer;
   }
   
   button:hover{

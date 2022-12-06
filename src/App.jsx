@@ -6,18 +6,18 @@ function App() {
 
   const [mytext, setmytext] = useState("");
   const [mycode, setmycode] = useState([]);
-  const [scrambledtext, setscrambledtext] = useState("")
+  const [scrambledText, setScrambledText] = useState("");
+  const [entryHidden, setEntryHidden] = useState(false);
   const textOut = useRef();
 
-  
   const scramble = {
     "0":
       (q, text) => {
-        return Functions.shiftUni(q, text)
+        return Functions.combTwo(q, text)
       },
     "1":
       (q, text) => {
-        return Functions.reverseChars(q, text)
+        return Functions.combThree(q, text, mycode)
       }
     ,
     "2":
@@ -34,7 +34,7 @@ function App() {
       },
     "5":
       (q, text) => {
-        return Functions.rotateChars(q, text);
+        return Functions.combOne(q, text);
       },
     "6":
       (q, text) => {
@@ -42,11 +42,11 @@ function App() {
       },
     "7":
       (q, text) => {
-        return Functions.rotateCharsTwice(q, text);
+        return Functions.combThree(q, text, mycode);
       },
     "8":
       (q, text) => {
-        return Functions.shiftUniTwo(q, text);
+        return Functions.combThree(q, text, mycode);
       },
     "9":
       (q, text) => {
@@ -72,11 +72,11 @@ function App() {
   }
 
   const handleScramble = () => {
-    setscrambledtext(scramble[mycode[4]](0, scramble[mycode[3]](0, scramble[mycode[2]](0, scramble[mycode[1]](0, scramble[mycode[0]](0, mytext))))));
+    setScrambledText(scramble[mycode[4]](0, scramble[mycode[3]](0, scramble[mycode[2]](0, scramble[mycode[1]](0, scramble[mycode[0]](0, mytext))))));
   }
 
   const handleUnscramble = () => {
-    setscrambledtext(scramble[mycode[0]](1, scramble[mycode[1]](1, scramble[mycode[2]](1, scramble[mycode[3]](1, scramble[mycode[4]](1, mytext))))));
+    setScrambledText(scramble[mycode[0]](1, scramble[mycode[1]](1, scramble[mycode[2]](1, scramble[mycode[3]](1, scramble[mycode[4]](1, mytext))))));
   }
 
   const scrambleText = () => {
@@ -88,19 +88,14 @@ function App() {
   }
 
   const toggleEntry = () => {
-    const entryWindow = document.getElementById('entryBanner');
-    if(entryWindow.style.display === 'flex'){
-      entryWindow.style.display = 'none'
-    }else{
-      entryWindow.style.display = 'flex'
-    }
+    setEntryHidden(!entryHidden)
   }
 
 
   return (
 
     <div className="App">
-      <div id="entryBanner" className="entry-banner">
+      <div id="entryBanner" className={`entry-banner ${entryHidden && 'hidden'}`}>
         <div className="entry-window">
           <h2 className="entry-header">SCRAMBLE MESSAGE</h2>
           <ol>
@@ -117,7 +112,7 @@ function App() {
             <li>Press UNSCRAMBLE</li>
             <li>Your unscrambled message will show in the output!</li>
           </ol>
-          <button onClick={toggleEntry} className="entry-button">CLOSE</button>
+          <button onClick={toggleEntry} className="entry-button clickable">CLOSE</button>
         </div>
       </div>
       <header className="App-header">
@@ -147,7 +142,7 @@ function App() {
           </div>
           </div>
          
-          <div className="text-preview" id="scrambledText" >{scrambledtext?(scrambledtext):(<span className='placeholder-text'>YOUR SCRAMBLED TEXT WILL SHOW HERE</span>)}</div>
+          <div className="text-preview" id="scrambledText" >{scrambledText?(scrambledText):(<span className='placeholder-text'>YOUR SCRAMBLED TEXT WILL SHOW HERE</span>)}</div>
         </div>
 
       </div>

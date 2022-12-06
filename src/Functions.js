@@ -108,7 +108,6 @@ const switchChars = (q, text) => {
 
   const shiftUniTwo = (q, text) => {
     if (q === 0) {
-      console.log(text);
       const tempText = text;
       const tempArray = tempText.split('');
       for (let i = 0; i < tempArray.length; i++) {
@@ -155,6 +154,30 @@ const switchChars = (q, text) => {
     return text.split('').reverse().join('');
   };
 
+  const combOne = (q, text) => {
+    if(q === 0){
+      return rotateCharsTwice(q, shiftUniTwo(q, reverseChars(q, text)))
+    }else{
+      return reverseChars(q, shiftUniTwo(q, rotateCharsTwice(q, text)))
+    }
+  }
+
+  const combTwo = (q, text) => {
+    if(q === 0){
+      return switchCharsTwo(q,rotateCharsTwice(q, shiftUni(q, reverseChars(q, text))))
+    }else{
+      return reverseChars(q, shiftUni(q, rotateCharsTwice(q, switchCharsTwo(q,text))))
+    }
+  }
+
+  const combThree = (q, text, mycode) => {
+    if(q === 0){
+      return shiftByCode(q,rotateCharsTwice(q, shiftUni(q, reverseChars(q, text))), mycode)
+    }else{
+      return reverseChars(q, shiftUni(q, rotateCharsTwice(q, shiftByCode(q,text, mycode))))
+    }
+  }
+
  module.exports = {
-    switchChars, switchCharsTwo,shiftUni, shiftUniTwo, rotateChars, rotateCharsTwice, shiftByCode, reverseChars
+    switchChars, switchCharsTwo,shiftUni, shiftUniTwo, rotateChars, rotateCharsTwice, shiftByCode, reverseChars, combOne, combTwo, combThree
  };
