@@ -1,6 +1,8 @@
 import './App.css';
 import { useRef, useState } from 'react';
-import * as Functions from './Functions'
+import * as Functions from './Functions';
+
+const copy = require('./resources/copy.png');
 
 function App() {
 
@@ -91,6 +93,14 @@ function App() {
     setEntryHidden(!entryHidden)
   }
 
+  const copyText = () => {
+ 
+    navigator.clipboard.writeText(scrambledText);
+  
+    // Alert the copied text
+    alert("Copied the text: " + scrambledText);
+  }
+
 
   return (
 
@@ -142,7 +152,7 @@ function App() {
           </div>
           </div>
          
-          <div className="text-preview" id="scrambledText" >{scrambledText?(scrambledText):(<span className='placeholder-text'>YOUR SCRAMBLED TEXT WILL SHOW HERE</span>)}</div>
+          <div className="text-preview" id="scrambledText" >{scrambledText?(scrambledText):(<span className='placeholder-text'>YOUR SCRAMBLED TEXT WILL SHOW HERE</span>)}<div id="copy-button" className={`clickable ${!scrambledText && 'hidden'}`} onClick = {() => copyText()}><img src={copy} alt='copy text'/></div></div>
         </div>
 
       </div>

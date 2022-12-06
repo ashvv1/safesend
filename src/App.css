@@ -151,14 +151,22 @@ h1{
   height: 20vh;
   width: 80vw;
   background-color: #0678a183;
-  margin: 1vh;
-  margin-bottom: 0;
   color: white;
+  margin: 1em;
   white-space: normal;
   display: block;
   word-break:break-word;
   font-size: 25px;
   overflow-y: auto;
+  position: relative;
+}
+
+#copy-button{
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .code-preview {
