@@ -1,5 +1,5 @@
 import './App.css';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import * as Functions from './Functions';
 
 const copy = require('./resources/copy.png');
@@ -7,11 +7,36 @@ const copy = require('./resources/copy.png');
 function App() {
 
   const [mytext, setmytext] = useState("");
-  const [mycode, setmycode] = useState([]);
+  const [myCode, setmyCode] = useState([]);
   const [scrambledText, setScrambledText] = useState("");
   const [entryHidden, setEntryHidden] = useState(false);
   const textOut = useRef();
 
+  
+  useEffect(() => {
+
+    const handleKeyPress = (event) => {
+      const isNum = isFinite(event.key);
+      console.log(document.activeElement.tagName)
+      if(document.activeElement.tagName !== 'TEXTAREA'){
+        if(isNum && myCode.length < 5){
+          setmyCode((prevCode) => {
+            return [...prevCode, event.key]
+          })
+        }else if(event.key === 'Backspace'){
+          const newCode = myCode.slice(0, -1);
+          setmyCode(newCode)
+          }
+      }
+      }
+
+    document.addEventListener('keydown', handleKeyPress);
+    // Don't forget to clean up
+    return function cleanup() {
+      document.removeEventListener('keydown', handleKeyPress);
+    }
+  }, [myCode]);
+  
   const scramble = {
     "0":
       (q, text) => {
@@ -19,7 +44,7 @@ function App() {
       },
     "1":
       (q, text) => {
-        return Functions.combThree(q, text, mycode)
+        return Functions.combThree(q, text, myCode)
       }
     ,
     "2":
@@ -40,15 +65,15 @@ function App() {
       },
     "6":
       (q, text) => {
-        return Functions.shiftByCode(q, text, mycode);
+        return Functions.shiftByCode(q, text, myCode);
       },
     "7":
       (q, text) => {
-        return Functions.combThree(q, text, mycode);
+        return Functions.combThree(q, text, myCode);
       },
     "8":
       (q, text) => {
-        return Functions.combThree(q, text, mycode);
+        return Functions.combThree(q, text, myCode);
       },
     "9":
       (q, text) => {
@@ -63,22 +88,22 @@ function App() {
 
   const addCode = (e) => {
     const number = (parseInt(e.target.innerHTML));
-    if (mycode.length < 5) {
-      setmycode([...mycode, number])
+    if (myCode.length < 5) {
+      setmyCode([...myCode, number])
     }
   }
 
   const backSpace = () => {
-    setmycode(mycode.slice(0, -1)
+    setmyCode(myCode.slice(0, -1)
     )
   }
 
   const handleScramble = () => {
-    setScrambledText(scramble[mycode[4]](0, scramble[mycode[3]](0, scramble[mycode[2]](0, scramble[mycode[1]](0, scramble[mycode[0]](0, mytext))))));
+    setScrambledText(scramble[myCode[4]](0, scramble[myCode[3]](0, scramble[myCode[2]](0, scramble[myCode[1]](0, scramble[myCode[0]](0, mytext))))));
   }
 
   const handleUnscramble = () => {
-    setScrambledText(scramble[mycode[0]](1, scramble[mycode[1]](1, scramble[mycode[2]](1, scramble[mycode[3]](1, scramble[mycode[4]](1, mytext))))));
+    setScrambledText(scramble[myCode[0]](1, scramble[myCode[1]](1, scramble[myCode[2]](1, scramble[myCode[3]](1, scramble[myCode[4]](1, mytext))))));
   }
 
   const scrambleText = () => {
@@ -94,17 +119,14 @@ function App() {
   }
 
   const copyText = () => {
- 
     navigator.clipboard.writeText(scrambledText);
-  
-    // Alert the copied text
-    alert("Copied the text: " + scrambledText);
+    setScrambledText("Copied to clipboard! Have fun ;)")
   }
 
 
   return (
 
-    <div className="App">
+    <div className="App" >
       <div id="entryBanner" className={`entry-banner ${entryHidden && 'hidden'}`}>
         <div className="entry-window">
           <h2 className="entry-header">SCRAMBLE MESSAGE</h2>
@@ -132,9 +154,9 @@ function App() {
       </header>
       <div className="App-body">
         <div className="input-container">
-          <input className="text-input" ref={textOut} onChange={e => changeText(e)} placeholder="Enter phrase to encode/decode" />
+          <textarea className="text-input" ref={textOut} onChange={e => changeText(e)} placeholder="Enter phrase to encode/decode" />
           <p className="label">5 Digit Code</p>
-          <div className="code-preview">{mycode}</div>
+          <div className="code-preview">{myCode}</div>
           <div className="code-input">
             {[...Array(10)].map((n, i) =>
               <span key={"button" + i} className="code-number" onClick={e => addCode(e)}>{i}</span>
@@ -145,8 +167,8 @@ function App() {
           <div className="options-container">
           <div className="left-options"></div>
           <div className='options'>
-          <button className="option-button" onClick={scrambleText} disabled={mycode.length !== 5}>SCRAMBLE</button>
-          <button className="option-button" onClick={unscrambleText} disabled={mycode.length !== 5}>DESCRAMBLE</button>
+          <button className="option-button" onClick={scrambleText} disabled={myCode.length !== 5}>SCRAMBLE</button>
+          <button className="option-button" onClick={unscrambleText} disabled={myCode.length !== 5}>DESCRAMBLE</button>
           </div>
           <div className="right-options">
           </div>

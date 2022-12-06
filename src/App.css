@@ -56,9 +56,9 @@
 
 .help-icon{
   font-family: 'Pacifico', 'Arial';
-  font-size: 20px;
-  width: 30px;
-  height: 30px;
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,7 +91,7 @@ border-color: #0677A1;
 .entry-window{
   height: auto;
   width: auto;
-  padding: 7px;
+  padding: 1em;
   background-color: rgba(0, 0, 0, 0.774);
   border-radius: 5px;
   box-shadow: inset white 0px 0px 10px 1px;
@@ -99,6 +99,13 @@ border-color: #0677A1;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-size: 2em;
+}
+
+.entry-window button{
+  height: 5%;
+  width: 5em;
+  font-size: 1em;
 }
 
 h1{
@@ -136,13 +143,15 @@ h1{
 .text-input {
   text-align: start;
   margin: 1vh;
-  font-size: 20px;
+  font-size: 3em;
   height: 20vh;
   width: 80vw;
   display: block;
   word-break:break-word;
-  box-shadow:#2D4159 inset 0px 0 20px 5px; 
+  box-shadow:#2D4159 inset 0px 0 20px 5px;
+  resize: none;
 }
+
 .header-special{
   font-family: 'Pacifico';
 }
@@ -167,6 +176,10 @@ h1{
   position: absolute;
   bottom: 0;
   right: 0;
+  background-color: rgba(255, 255, 255, 0.726);
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .code-preview {
@@ -314,14 +327,15 @@ button {
   .entry-window{
     width: 80%;
     height: 80%;
+    padding: 1em;
   }
 
   .entry-header{
-    font-size: 20px;
+    font-size: 170%;
   }
 
   ol{
-    font-size: 15px;
+    font-size: 150%;
   }
 
   .header-text{
