@@ -23,6 +23,9 @@
   position: fixed;
   background-color: #59253a;
   box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .entry-banner{
@@ -43,15 +46,18 @@
 
 #header-section{
   width: 100%;
-  height: 300%;
+  height: 100%;
   display: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon-container{
   height: 100%;
   justify-content: center;
   display: flex;
-  align-items: flex-end;
+  align-items: center
 
 }
 
@@ -265,6 +271,7 @@ ol{
   background-color:  #59253a;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
 
 .code-number {
