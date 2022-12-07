@@ -210,7 +210,7 @@ h1{
 
 .code-input {
   padding: .5em;
-  height: 5em;
+  height: auto;
   width: 100%;
   background-color:  #59253A;
   display: flex;
