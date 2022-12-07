@@ -17,7 +17,6 @@ function App() {
 
     const handleKeyPress = (event) => {
       const isNum = isFinite(event.key);
-      console.log(document.activeElement.tagName)
       if(document.activeElement.tagName !== 'TEXTAREA'){
         if(isNum && myCode.length < 5){
           setmyCode((prevCode) => {

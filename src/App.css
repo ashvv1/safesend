@@ -22,6 +22,7 @@
   height: 100%;
   position: fixed;
   background-color: #59253a;
+  box-sizing: border-box;
 }
 
 .entry-banner{
@@ -161,13 +162,13 @@ h1{
   width: 80vw;
   background-color: #0678a183;
   color: white;
-  margin: 1em;
   white-space: normal;
   display: block;
   word-break:break-word;
-  font-size: 25px;
+  font-size: 2em;
   overflow-y: auto;
   position: relative;
+  box-shadow:#080b0f inset 0 0 .3em .1em;
 }
 
 #copy-button{
@@ -208,13 +209,14 @@ h1{
 }
 
 .code-input {
-  margin: 8px;
-  height: auto;
+  padding: .5em;
+  height: 5em;
   width: 100%;
   background-color:  #59253A;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
 }
 
@@ -229,6 +231,7 @@ h1{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1em;
 }
 
 .left-options {
